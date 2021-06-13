@@ -12,23 +12,26 @@ body , html {
 	color: var(--cor-roxo);
 	margin: 2%;
 	text-transform: uppercase;
+	line-height: 0;
 }
 
 /* BORDA DAS SEÇÕES */
 .borda{
 	align-items: center;
 	border-radius: 10px;
-	box-shadow:
-	.5rem .5rem 1.4rem var(--cor3),
-	-.5rem -.5rem 1.4rem white;
+	box-shadow: .5rem .5rem 1.4rem var(--cor3), -.5rem -.5rem 1.4rem white;
+}
 
+.col{
+	padding: 0;
 }
 
 .titulo {
+	font-family: calibri;
 	color: var(--cor3);
 	font-weight: bold;
 	font-size: 2rem;
-	margin-bottom: 5%;
+	/* margin-bottom: 5%; */
 }
 
 /* BOTÃO SALVAR NO PERFIL */
@@ -53,7 +56,10 @@ input{
 	color: var(--cor-amarelo);
 	background: var(--cor1);
 	text-transform: capitalize;
-
+	border-radius: 3px;
+	padding: 5px;
+	margin: 2px;
+	border: none;
 	box-shadow:
 	.1rem .1rem 1.4rem var(--cor2),
 	-.1rem -.1rem 1.4rem white;
