@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Final Fantasy RPG - Character Sheet</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/main.css">
+    
+    <style>
+        /* Additional Layout Tweaks */
+        .header-logo {
+            max-height: 80px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 10px var(--glow-color));
+        }
+        
+        .sticky-top-nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg-color);
+            z-index: 999;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+        
+        .ff-numeric-input {
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle -->
+    <div class="theme-switch" id="themeToggle" onclick="toggleTheme()">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">Tema Dark</span>
+    </div>
+
+    <div class="container pb-5">
+        <!-- HEADER -->
+        <header class="text-center mb-5">
+            <img src="ffrpg-icon.png" class="header-logo img-fluid" alt="Final Fantasy RPG Icon">
+            <h1 class="display-4 mb-0">Ficha de Personagem</h1>
+        </header>
+
+        <!-- PERFIL & QUICK STATS -->
+        <section class="card-ff mb-4">
+            <h2 class="section-title">Perfil</h2>
+            <div class="row g-4 align-items-end">
+                <div class="col-md-4">
+                    <div class="ff-input-group">
+                        <label class="ff-label" for="nomePersonagem">Nome do Personagem</label>
+                        <input id="nomePersonagem" class="ff-input" type="text" placeholder="Ex: Cloud Strife">
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="ff-input-group">
+                        <label class="ff-label" for="hp">HP Atual/Max</label>
+                        <input id="hp" class="ff-input" type="text" placeholder="0000/0000">
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="ff-input-group">
+                        <label class="ff-label" for="mp">MP Atual/Max</label>
+                        <input id="mp" class="ff-input" type="text" placeholder="000/000">
+                    </div>
+                </div>
+                <div class="col-6 col-md-1">
+                    <div class="ff-input-group">
+                        <label class="ff-label" for="nivel">Lvl</label>
+                        <input id="nivel" class="ff-input text-center" type="text" placeholder="1">
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="ff-input-group">
+                        <label class="ff-label" for="gin">Gil (G)</label>
+                        <input id="gin" class="ff-input" type="text" placeholder="0G">
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 text-end">
+                    <button type="button" class="btn-ff w-100">Salvar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATRIBUTOS & IMAGEM -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-8">
+                <section class="card-ff h-100">
+                    <h2 class="section-title">Atributos Primários</h2>
+                    <div class="table-responsive">
+                        <table class="table-ff">
+                            <thead>
+                                <tr>
+                                    <th>Atributo</th>
+                                    <th class="text-center">Bônus</th>
+                                    <th class="text-center">Max</th>
+                                    <th class="text-center">Valor</th>
+                                    <th class="text-center">Teste</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Força</strong></td>
+                                    <td class="text-center"><input id="forcaBonus" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="forcaMax" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="forcaValor" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="forcaTeste" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vitalidade</strong></td>
+                                    <td class="text-center"><input id="vitalidadeBonus" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="vitalidadeMax" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="vitalidadeValor" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="vitalidadeTeste" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Agilidade</strong></td>
+                                    <td class="text-center"><input id="agilidadeBonus" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="agilidadeMax" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="agilidadeValor" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="agilidadeTeste" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Velocidade</strong></td>
+                                    <td class="text-center"><input id="velocidadeBonus" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="velocidadeMax" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="velocidadeValor" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="velocidadeTeste" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Magia</strong></td>
+                                    <td class="text-center"><input id="magiaBonus" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="magiaMax" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="magiaValor" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="magiaTeste" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Espírito</strong></td>
+                                    <td class="text-center"><input id="espiritoBonus" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="espiritoMax" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="espiritoValor" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td class="text-center"><input id="espiritoTeste" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <section class="card-ff h-100 p-0 overflow-hidden">
+                    <div class="char-img-container">
+                        <img src="https://i.pinimg.com/originals/d8/af/dd/d8afddeef9e0684b197812316649db19.png" alt="Personagem">
+                        <div class="p-3 text-center bg-dark text-light bg-opacity-75 position-absolute bottom-0 w-100">
+                             <h4 id="charLabel" class="m-0 text-uppercase fw-bold">HERÓI</h4>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ESTATISTICAS & ARMAS -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-5">
+                <section class="card-ff">
+                    <h2 class="section-title">Estatísticas</h2>
+                    <div class="table-responsive">
+                        <table class="table-ff">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Job Bônus:</td>
+                                    <td><input id="bonusAtaqueJob" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td>Evasão (EVA):</td>
+                                    <td><input id="eva" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>EVA Mágica:</td>
+                                    <td><input id="estat_eva_m" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td>Armadura (ARM):</td>
+                                    <td><input id="estat_arm" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>ARM Mágica:</td>
+                                    <td><input id="estat_arm_m" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td>Precisão (PREC):</td>
+                                    <td><input id="estat_prec" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>PREC Mágica:</td>
+                                    <td><input id="estat_prec_m" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td>Destreza (DEX):</td>
+                                    <td><input id="estat_dex" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mente (MNT):</td>
+                                    <td><input id="estat_mnt" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td>Expertise (EXP):</td>
+                                    <td><input id="estat_exp" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Dano Vida (DV):</td>
+                                    <td><input id="estat_dv" class="ff-input ff-numeric-input" type="text"></td>
+                                    <td>Dano Magia (DM):</td>
+                                    <td><input id="estat_dm" class="ff-input ff-numeric-input" type="text"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-7">
+                <section class="card-ff h-100">
+                    <h2 class="section-title">Arsenal & Combate</h2>
+                    <div class="table-responsive">
+                        <table class="table-ff">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Nome</th>
+                                    <th>Perícia</th>
+                                    <th>Atk/Def</th>
+                                    <th>Dano</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Mão</strong></td>
+                                    <td><input id="atk_nome" class="ff-input" type="text"></td>
+                                    <td><input id="atk_pericia" class="ff-input text-center" style="width:50px" type="text"></td>
+                                    <td><input id="atk_ataque" class="ff-input text-center" style="width:50px" type="text"></td>
+                                    <td><input id="atk_dano" class="ff-input text-center" style="width:50px" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Escudo</strong></td>
+                                    <td><input id="def_nome" class="ff-input" type="text"></td>
+                                    <td><input id="def_pericia" class="ff-input text-center" style="width:50px" type="text"></td>
+                                    <td><input id="def_ataque" class="ff-input text-center" style="width:50px" type="text"></td>
+                                    <td><input id="def_dano" class="ff-input text-center" style="width:50px" type="text"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4">
+                        <label class="ff-label">Habilidade do Equipamento</label>
+                        <input id="atk_habilidade" class="ff-input" type="text" placeholder="Propriedades especiais das armas...">
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- DEFESA & ARMADURAS -->
+        <section class="card-ff mb-4">
+            <h2 class="section-title">Vestimentas & Acessórios</h2>
+            <div class="table-responsive">
+                <table class="table-ff">
+                    <thead>
+                        <tr>
+                            <th>Local</th>
+                            <th>Nome do Equipamento</th>
+                            <th class="text-center">ARM</th>
+                            <th class="text-center">ARM.M</th>
+                            <th class="text-center">EVA</th>
+                            <th class="text-center">EVA.M</th>
+                            <th>Propriedades / Habilidades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cabeça</strong></td>
+                            <td><input id="def_cabeca_nome" class="ff-input" type="text"></td>
+                            <td class="text-center"><input id="def_cabeca_arm" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_cabeca_arm_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_cabeca_eva" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_cabeca_eva_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td><input id="def_cabeca_habilidade" class="ff-input" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Corpo</strong></td>
+                            <td><input id="def_corpo_nome" class="ff-input" type="text"></td>
+                            <td class="text-center"><input id="def_corpo_arm" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_corpo_arm_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_corpo_eva" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_corpo_eva_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td><input id="def_corpo_habilidade" class="ff-input" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mãos</strong></td>
+                            <td><input id="def_maos_nome" class="ff-input" type="text"></td>
+                            <td class="text-center"><input id="def_maos_arm" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_maos_arm_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_maos_eva" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_maos_eva_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td><input id="def_maos_habilidade" class="ff-input" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Acessório 1</strong></td>
+                            <td><input id="def_aces1_nome" class="ff-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces1_arm" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces1_arm_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces1_eva" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces1_eva_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td><input id="def_aces1_habilidade" class="ff-input" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Acessório 2</strong></td>
+                            <td><input id="def_aces2_nome" class="ff-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces2_arm" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces2_arm_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces2_eva" class="ff-input ff-numeric-input" type="text"></td>
+                            <td class="text-center"><input id="def_aces2_eva_m" class="ff-input ff-numeric-input" type="text"></td>
+                            <td><input id="def_aces2_habilidade" class="ff-input" type="text"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- HABILIDADES & PERÍCIAS -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-4">
+                <section class="card-ff h-100">
+                    <h2 class="section-title">Perícias</h2>
+                    <div class="table-responsive">
+                        <table class="table-ff">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th class="text-center">Pts</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="periciaList">
+                                <tr>
+                                    <td><input class="ff-input" type="text" placeholder="Ex: Atletismo"></td>
+                                    <td><input class="ff-input text-center" type="text" placeholder="0"></td>
+                                    <td><input class="ff-input text-center" type="text" placeholder="0"></td>
+                                </tr>
+                                <!-- Mais linhas podem ser adicionadas via JS se necessário -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-8">
+                <section class="card-ff h-100">
+                    <h2 class="section-title">Habilidades Especiais</h2>
+                    <div class="table-responsive">
+                        <table class="table-ff text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Lvl</th>
+                                    <th>Tipo</th>
+                                    <th>MP/TC</th>
+                                    <th>Alvo</th>
+                                    <th>Efeito Principal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input id="hab_nome" class="ff-input" type="text"></td>
+                                    <td><input id="hab_nivel" class="ff-input text-center" style="width:40px" type="text"></td>
+                                    <td><input id="hab_tipo" class="ff-input" style="width:80px" type="text"></td>
+                                    <td><input id="hab_mp_tc" class="ff-input text-center" style="width:60px" type="text"></td>
+                                    <td><input id="hab_alvo" class="ff-input" style="width:80px" type="text"></td>
+                                    <td><input id="hab_efeito" class="ff-input" type="text"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- INVENTARIO -->
+        <section class="card-ff mb-4">
+            <h2 class="section-title">Inventário de Itens</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="ff-label">Consumíveis & Materiais</label>
+                    <textarea id="inventario_principal" class="ff-input" placeholder="Poções, Éteres, Phoenix Downs..."></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label class="ff-label">Miscelânea & Quest Itens</label>
+                    <textarea id="inventario_secundario" class="ff-input" placeholder="Mapas, Chaves, Documentos..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- BACKGROUND & ANOTACOES -->
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <section class="card-ff h-100">
+                    <h2 class="section-title">Background / História</h2>
+                    <textarea id="backg" class="ff-input" style="min-height: 400px;">Nome: 
+Data Nascimento: 
+Local de nascimento: 
+Família: 
+Olhos: 
+Cabelo: 
+Peso: 
+Altura: 
+Signo: 
+Tipo sanguíneo: 
+Peculiaridades chaves: 
+Citação: 
+Aparência: 
+Aliados: 
+Inimigos: 
+Objetivo: 
+Resumo background:</textarea>
+                </section>
+            </div>
+            <div class="col-lg-5">
+                <section class="card-ff h-100">
+                    <h2 class="section-title">Anotações do Mestre</h2>
+                    <textarea id="anotacoes" class="ff-input" style="min-height: 400px;" placeholder="Eventos importantes, pistas, débitos..."></textarea>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme Management
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            updateThemeUI(newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        function updateThemeUI(theme) {
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+            if (theme === 'dark') {
+                icon.innerText = '🌙';
+                text.innerText = 'Tema Dark';
+            } else {
+                icon.innerText = '☀️';
+                text.innerText = 'Tema Light';
+            }
+        }
+
+        // Initialize theme from storage
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeUI(savedTheme);
+            
+            // Link Character Name to Image Label
+            const nameInput = document.getElementById('nomePersonagem');
+            const charLabel = document.getElementById('charLabel');
+            nameInput.addEventListener('input', (e) => {
+                charLabel.innerText = e.target.value || 'HERÓI';
+            });
+        });
+    </script>
+</body>
+</html>

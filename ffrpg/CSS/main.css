@@ -1,0 +1,223 @@
+:root {
+    /* Theme Final Fantasy Modern Dark (Default) */
+    --primary-color: #00d2ff;
+    --secondary-color: #3a7bd5;
+    --bg-color: #0d1117;
+    --card-bg: rgba(22, 27, 34, 0.85);
+    --text-color: #e6edf3;
+    --text-muted: #8b949e;
+    --border-color: #30363d;
+    --input-bg: rgba(13, 17, 23, 0.7);
+    --input-focus: #00d2ff;
+    --glow-color: rgba(0, 210, 255, 0.4);
+    --ff-gradient: linear-gradient(135deg, #004e92 0%, #000428 100%);
+    --glass-effect: blur(10px);
+}
+
+[data-theme="light"] {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --bg-color: #f0f2f5;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #1a1a1a;
+    --text-muted: #5f6368;
+    --border-color: #dadce0;
+    --input-bg: #ffffff;
+    --input-focus: #007bff;
+    --glow-color: rgba(0, 123, 255, 0.15);
+    --ff-gradient: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    --glass-effect: none;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Outfit', 'Inter', sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+    background-image: radial-gradient(circle at 50% 0%, var(--glow-color) 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* Typography */
+h1, h2, h3, .section-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    border-left: 5px solid var(--primary-color);
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+h1::after, .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+/* Layout Components */
+.card-ff {
+    background: var(--card-bg);
+    backdrop-filter: var(--glass-effect);
+    -webkit-backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.card-ff:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
+    border-color: var(--primary-color);
+}
+
+/* Form Elements */
+.ff-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.ff-input {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid transparent;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.6rem 0.5rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border-radius: 4px 4px 0 0;
+}
+
+.ff-input:focus {
+    outline: none;
+    background: rgba(var(--primary-color), 0.05);
+    border-bottom-color: var(--primary-color);
+    box-shadow: 0 4px 12px var(--glow-color);
+}
+
+textarea.ff-input {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 180px;
+}
+
+/* Tables */
+.table-ff {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.table-ff th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border-color);
+    padding: 0.8rem 0.5rem;
+    text-align: left;
+}
+
+.table-ff td {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Character Image Container */
+.char-img-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.char-img-container img {
+    width: 100%;
+    transition: transform 0.8s ease;
+}
+
+/* Buttons */
+.btn-ff {
+    background: var(--ff-gradient);
+    color: #fff;
+    border: 1px solid var(--primary-color);
+    padding: 0.8rem 2.5rem;
+    border-radius: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px var(--glow-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ff::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-ff:hover::before {
+    left: 100%;
+}
+
+.btn-ff:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 25px var(--glow-color);
+    color: #fff;
+}
+
+/* Theme Toggle */
+.theme-switch {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.theme-switch:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+
+/* Grid Adjustments */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.25rem;
+    }
+}
